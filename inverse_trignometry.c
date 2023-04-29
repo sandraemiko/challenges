@@ -15,10 +15,10 @@ int f_acosi(float x);
 int main(void)
 {
 
-float x = 0.5;
-float arccos_x = f_acosi(x);
+	float x = 0.5;
+	int arccos_x = f_acosi(x);
 
-printf ("%f aqui\n", arccos_x);
+	printf ("%i \n", arccos_x);
 }
 
 ///////////////////////////////////////float sqrt_newton//////////////////////////////////////////////
