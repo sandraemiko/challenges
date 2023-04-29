@@ -91,7 +91,7 @@ float f_acosf(float x)
         return (0); 
     else 
 	{
-		result = sqrt_newton((1 - x * x),7)/x;
+		result = sqrt_newton((1 - x * x),7)/x; 
 		if (result > 1)
 			return (M_PI/2 - atanf_taylor(1/result,12));
 		else
