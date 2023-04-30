@@ -2,6 +2,19 @@
 #include <string.h>
 #include <math.h>
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+Faça as funções: 
+
+float acosf(float x)
+int   acosi(float x)
+
+return: arc cosseno do ângulo x
+
+Funções permitidas: NENHUMA
+Prazo 28/04
+*/
 //////////////////////////////////////// PROTOTYPE ///////////////////////////////////////////////////
 
 float sqrt_newton (float n, int aprox);
@@ -86,10 +99,9 @@ float atanf_taylor (float x, int n)
 
 float f_acosf(float x) 
 {
-	float result;
+	float t;
 	
-	result=0;
-    if (x < -1 || x > 1) 
+	if (x < -1 || x > 1) 
         return (NAN);
     else if (x == -1) 
         return (M_PI); 
@@ -97,13 +109,12 @@ float f_acosf(float x)
         return (0); 
     else 
 	{
-		result = sqrt_newton((1 - x * x),7)/x; 
-		if (result > 1)
-			return (M_PI/2 - atanf_taylor(1/result,12));
+		t = sqrt_newton((1 - x * x),7)/x; 
+		if (t > 1)
+			return (M_PI/2 - atanf_taylor(1/t,12));
 		else
-			return (atanf_taylor(result,12)); 
+			return (atanf_taylor(t,12)); 
 	}
-    
 }
 
 /////////////////////////////////////int f_acosi(float x)/////////////////////////////////////////
