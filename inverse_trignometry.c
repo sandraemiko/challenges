@@ -48,13 +48,16 @@ float sqrt_newton (float n, int aprox)
 ///////////////////////////////////////float power(float b, int exp)///////////////////////////////////////////
 
 float power(float b, int exp) {
-    if (exp == 0) 
-        return (1);
-    else if (exp > 0) 
-	    return (b * power(b, exp - 1));
-    else 
-	    return (1 / power(b, -exp));
-    
+    float result;
+	 
+    result = 1;
+    while (exp != 0) {
+        if (exp % 2 == 1)
+            result *= b;
+        b *= b;
+        exp /= 2;
+    }
+    return (result);
 }
 
 ////////////////////////////////////float atanf_taylor (float x, int n) ////////////////////////////////////////
