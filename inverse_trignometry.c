@@ -47,7 +47,8 @@ float sqrt_newton (float n, int aprox)
 
 ///////////////////////////////////////float power(float b, int exp)///////////////////////////////////////////
 
-float power(float b, int exp) {
+float power(float b, int exp) 
+{
     float result;
 	 
     result = 1;
