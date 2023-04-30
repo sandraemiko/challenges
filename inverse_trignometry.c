@@ -52,7 +52,8 @@ float power(float b, int exp)
     float result;
 	 
     result = 1;
-    while (exp != 0) {
+    while (exp != 0)
+	{
         if (exp % 2 == 1)
             result *= b;
         b *= b;
@@ -72,10 +73,11 @@ float atanf_taylor (float x, int n)
     result = 0;
 	sign = 1;
 	i = 0;
-	while(n > i) {
-      result += sign * (power(x, (2*i+1)) / (2*i+1));
-	  sign *= -1;
-	  i++;
+	while(n > i) 
+	{
+		result += sign * (power(x, (2*i+1)) / (2*i+1));
+		sign *= -1;
+		i++;
 	}
 	return (result);
 }
