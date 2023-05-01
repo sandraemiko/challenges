@@ -116,7 +116,7 @@ float f_atan(float y, float x)
             return(0.0);
         return (-M_PI/2.0);
     }
-    atan = f_same_sign(f_atanf_taylor(f_abs(y) / f_abs(x)), y_sign) - f_same_sign(0.0, x_sign);
+    atan = f_same_sign(f_atanf_taylor(f_abs(y) / f_abs(x)), y_sign);
     if (x < 0) 
         return(atan + f_same_sign(M_PI, y_sign));
     return(atan);
