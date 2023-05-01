@@ -1,16 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 
-/*
-Tendo o solo como plano XY e o eixo Z em direção ao centro da terra ... Crie 3 funções :
-
-float ang@(float acx, float acy, float acz);
-
-A função recebe os valores de aceleração em cada um dos eixos x', y', z' do acelerômetro 
-
-E retorna o ângulo em relação aos eixos da terra e do acelerômetro
-*/
-
 ///////////////////////////////////float f_abs(float num)//////////////////////////////////////////
 float f_abs(float num)
  {
@@ -205,68 +195,8 @@ float f_acosf(float x)
 			return(atanf(t)); 
 	}
 }
-
-////////////////////////////////////float ang_x(float acx, float acy, float acz)////////////////////////////////////////
-
-float ang_x(float acx, float acy, float acz)
-{
-    float G;
-    float cos;
-    float sin;
-    float tol;
-    float rooting_G;
-    float rooting_sin;
-    
-    tol = 1e-6;
-    rooting_G =f_power(acx,2) + f_power(acy,2) + f_power(acz,2);
-    G = f_sqrt_newton(rooting_G, rooting_G/2,tol);
-    cos = acx/G;
-    rooting_sin = 1 - f_power(cos , 2); 
-    sin = f_sqrt_newton(rooting_sin,rooting_sin/2, tol);
-    return(f_atan(sin, cos));
-}
-
-//////////////////////////////float ang_y(float acx, float acy, float acz)///////////////////////////////////////////////
-
-float ang_y(float acx, float acy, float acz)
-{
-    float G;
-    float cos;
-    float sin;
-    float tol;
-    float rooting_G;
-    float rooting_sin;
-    
-    tol = 1e-6;
-    rooting_G = f_power(acx,2) + f_power(acy,2) + f_power(acz,2);
-    G = f_sqrt_newton(rooting_G, rooting_G/2,tol);
-    cos = acy/G;
-    rooting_sin = 1 - f_power(cos , 2); 
-    sin = f_sqrt_newton(rooting_sin,rooting_sin/2, tol);
-    return(f_atan(sin, cos));
-}
-
-/////////////////////////////////float ang_z(float acx, float acy, float acz)////////////////////////////////////////////
-
-float ang_z(float acx, float acy, float acz) 
-{
-    float G; 
-    float tol; 
-    float rooting_G; 
-    float cos; 
-
-    tol = 1e-6;
-    rooting_G = f_power(acx,2) + f_power(acy,2) + f_power(acz,2);
-    G = f_sqrt_newton(rooting_G, rooting_G/2,tol);
-    cos = acz/G;
-    return(f_acosf(cos));
-}
-
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int main() 
-{
+int main() {
     printf("%f\n", atanf(1/1)); // output: 0.785398
     printf("%f\n", f_atan(1,1)); // output: 0.785398
     printf("%fui\n", atan2(1,1)); // output: 0.785398
