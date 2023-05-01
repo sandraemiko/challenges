@@ -84,7 +84,7 @@ float f_atanf_taylor(float x)
     float term;
     int i;
 
-    eps = 0.000001;  
+    eps = 1e-6;  
     result = 0.0;
     sign = 1;
     term = x;
@@ -138,7 +138,7 @@ float f_acosf(float x)
     float rooting;
     float tol;
 	
-    tol = 0.00001;
+    tol = 1e-6;
 	if (x < -1 || x > 1) 
         return(NAN);
     else if (x == -1) 
@@ -186,7 +186,7 @@ float ang_x(float acx, float acy, float acz)
     float rooting_G;
     float rooting_sin;
     
-    tol = 0.00001;
+    tol = 1e-6;
     rooting_G =f_power(acx,2) + f_power(acy,2) + f_power(acz,2);
     G = f_sqrt_newton(rooting_G, rooting_G/2,tol);
     cos = acx/G;
@@ -206,7 +206,7 @@ float ang_y(float acx, float acy, float acz)
     float rooting_G;
     float rooting_sin;
     
-    tol = 0.00001;
+    tol = 1e-6;
     rooting_G = f_power(acx,2) + f_power(acy,2) + f_power(acz,2);
     G = f_sqrt_newton(rooting_G, rooting_G/2,tol);
     cos = acy/G;
@@ -224,7 +224,7 @@ float ang_z(float acx, float acy, float acz)
     float rooting_G; 
     float cos; 
 
-    tol = 0.00001;
+    tol = 1e-6;
     rooting_G = f_power(acx,2) + f_power(acy,2) + f_power(acz,2);
     G = f_sqrt_newton(rooting_G, rooting_G/2,tol);
     cos = acz/G;
