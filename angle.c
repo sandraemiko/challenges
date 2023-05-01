@@ -78,13 +78,13 @@ float f_same_sign(float x, float y)
 
 float f_atanf_taylor(float x)
 {
-    const float eps;
+    float eps;
     float result;
     int sign;
     float term;
     int i;
 
-    eps = 1e-6;  
+    eps = 0.000001;  
     result = 0.0;
     sign = 1;
     term = x;
