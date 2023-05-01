@@ -11,6 +11,10 @@ A função recebe os valores de aceleração em cada um dos eixos x', y', z' do 
 E retorna o ângulo em relação aos eixos da terra e do acelerômetro
 */
 
+#include <stdio.h>
+#include <math.h>
+#include <stdint.h>
+
 ///////////////////////////////////float f_abs(float num)//////////////////////////////////////////
 float f_abs(float num)
  {
@@ -35,9 +39,9 @@ float f_same_sign(float x, float y)
 
 float f_atan_taylor(float x)
 {
-    float squared = x * x;
-    float result = x;
-    float term = x;
+    float squared;
+    float result;
+    float term;
     int i;
     
     squared = x * x;
@@ -51,7 +55,7 @@ float f_atan_taylor(float x)
          i += 2;
     }
     
-    return result;
+    return (result);
 }
 
 //////////////////////////////////float f_power(float b, int exp)////////////////////////////////////////
@@ -129,35 +133,95 @@ float atanf(float x)
         result = 0; 
     return (result);
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+int f_isnan(double x)
+{
+    return (x != x);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+int f_isinf(double x)
+{
+    return !isnan(x) && isnan(x - x);
+}
+
+//////////////////////////////////////float f_loor(float x)///////////////////////////////////////////////
+float f_loor(float x)
+{
+    int i;
+
+    i = (int) x;
+    if (x < 0 && x != i) 
+        i--;
+    return ((float) i);
+}
+
+//////////////////////////////////int f_signbit(float x)/////////////////////////////////////////////
+
+int f_signbit(float x)
+ {
+    union {
+        float f;
+        uint32_t i;
+    } u;
+    u.f = x;
+    return (u.i >> 31);
+}
+
+
+/////////////////////////////float f_mod(float x, float y)////////////////////////////////////////////
+
+float f_mod(float x, float y)
+{
+    float result;
+
+    if (y == 0) 
+        return (NAN);
+    result = x - y * f_loor(x / y);
+    if (result == 0)
+    {
+        if (f_signbit(x) != f_signbit(y)) 
+            return (-0.0);
+        else 
+            return (0.0);
+        
+    }
+    return (result);
+}
 
 /////////////////////////////////////float f_atan(float y, float x)///////////////////////////////////////////
 
 float f_atan(float y, float x)     
 {
-    int x_sign;
-    int y_sign;
-    float atan;
-
-    if (x < 0) 
-        x_sign = -1;
-    else 
-        x_sign = 1;
+    int quadrant;
+    float angle;
+    
+    if (f_isnan(x) || f_isnan(y)) 
+        return (NAN);
+    if (f_isinf(x) && f_isinf(y)) 
+        return (NAN);
+    if (x == 0 && y == 0) 
+        return (NAN);
+    quadrant = 0;
+    if (x < 0)
+        quadrant = 2;
     if (y < 0) 
-        y_sign = -1;
-    else 
-        y_sign = 1;
-    if (x == 0) 
+        quadrant = quadrant + 1;
+    angle = atanf(f_abs(y / x));;
+    switch (quadrant) 
     {
-        if (y > 0) 
-            return(M_PI/2.0);
-        if (y == 0) 
-            return(0.0);
-        return (-M_PI/2.0);
+        case 1: angle = M_PI - angle; break;
+        case 2: angle = angle + M_PI; break;
+        case 3: angle = -angle - M_PI; break;
     }
-    atan = f_same_sign(atanf(f_abs(y) /f_abs(x)), y_sign);
-    if (x < 0) 
-        return(atan + f_same_sign(M_PI, y_sign));
-    return(atan);
+    angle = f_mod(angle, 2 * M_PI);
+    if (angle < -M_PI) 
+        angle += 2 * M_PI;
+    if (angle > M_PI) 
+        angle -= 2 * M_PI;
+    return (angle);
 }
 
 ////////////////////////////float f_sqrt_newton(float n, float x, float tol)//////////////////////////////////////////
@@ -265,11 +329,10 @@ float ang_z(float acx, float acy, float acz)
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int main() 
-{
-    printf("%f\n", atanf(1/1)); // output: 0.785398
-    printf("%f\n", f_atan(1,1)); // output: 0.785398
-    printf("%fui\n", atan2(1,1)); // output: 0.785398
+int main() {
+    printf("%f\n", atanf(2/1)); // output: 0.785398
+    printf("%fresultado\n", f_atan(2,1)); // output: 0.785398
+    printf("%fui\n", atan2(2,1)); // output: 0.785398
 
     printf("%f\n", atanf(0.5f)); // output: 0.463648
     printf("%f\n", atanf(2)); // output: 1.107149
