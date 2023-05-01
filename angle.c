@@ -28,6 +28,13 @@ float ang_z(float acx, float acy, float acz);
 
 int main(void)
 {
+    float y = 1;
+    float x = 2;
+
+    float r = f_atan(y,x);
+
+    printf("%f\n", r);
+
 
 	
 }
@@ -141,7 +148,7 @@ float f_acosf(float x)
     else 
 	{
         rooting = 1 - f_power(x,2);
-		t = sqrt_newton(rooting,7,tol)/x; 
+		t = f_sqrt_newton(rooting,7,tol)/x; 
 		if (t > 1)
 			return(M_PI/2 - f_atanf_taylor(1/t));
 		else
@@ -159,7 +166,7 @@ float f_sqrt_newton(float n, float x, float tol)
         return(NAN);
     else if (n == 0) 
         return(0);
-    else if (f_abs(power(x,2) - n) <= tol) 
+    else if (f_abs(f_power(x,2) - n) <= tol) 
         return(x);
     else 
     {
@@ -221,7 +228,7 @@ float ang_z(float acx, float acy, float acz)
     rooting_G = f_power(acx,2) + f_power(acy,2) + f_power(acz,2);
     G = f_sqrt_newton(rooting_G, rooting_G/2,tol);
     cos = acz/G;
-    return(f_acos(cos));
+    return(f_acosf(cos));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
