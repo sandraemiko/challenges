@@ -34,7 +34,7 @@ float f_atan_taylor(float x)
     result = x;
     term = x;
     i = 3;
-    while(f_abs(term) > 1e-7f)
+    while(f_abs(term) > 1e-10f)
     {
         term = term * (-squared) / ((float)i);
         result += term;
@@ -65,13 +65,14 @@ float f_power(float b, int exp)
 
 float f_atan_chebyshev(float x)
 {
-    float pi = M_PI;
+    float pi;
     float result;
     float squared;
     float t;
     float u;
     int i;
     
+    pi = M_PI;
     if (x > 1)
         result = pi / 2 - f_atan_chebyshev(1 / x);
     else if (x < -1)
@@ -81,7 +82,7 @@ float f_atan_chebyshev(float x)
         squared = x * x;
         t = 0;
         u = 0;
-        i = 14;        
+        i = 1000;        
         while(i >= 0)
         {
             t = 1 / (2 * i + 1);
