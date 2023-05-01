@@ -28,10 +28,11 @@ int f_acosi(float x);
 int main(void)
 {
 
-	float x = 0.5;
-	int arccos_x = f_acosi(x);
+	float x = 2;
+	float arccos_x =  atanf_taylor(x, 130);
 
-	printf ("%i \n", arccos_x);
+
+	printf ("%f \n", arccos_x);
 }
 
 ///////////////////////////////////////float sqrt_newton//////////////////////////////////////////////

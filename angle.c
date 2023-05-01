@@ -28,12 +28,13 @@ float ang_z(float acx, float acy, float acz);
 
 int main(void)
 {
-    float y = 1;
-    float x = 2;
-
-    float r = f_atan(y,x);
-
-    printf("%f\n", r);
+    float y = -2;
+    float x = -1;
+    //float r_f_atan = f_atan(y, x);
+    float r_atan2 = f_atanf_taylor(2);
+    //printf("f_atan(%f, %f) = %f\n", y, x, r_f_atan);
+    printf("atan2(%f, %f) = %f\n", y, x, r_atan2);
+    return 0;
 
 
 	
@@ -69,9 +70,11 @@ float f_power(float b, int exp)
 
 float f_same_sign(float x, float y) 
 {
-    if ((x < 0) != (y < 0)) 
-        x = -x;
-    return(x);
+   if ((x < 0 && y > 0) || (x > 0 && y < 0)) 
+        return (-x);
+    else 
+        return (x);
+    
 }
 
 /////////////////////////////////////float f_atanf_taylor(float x)/////////////////////////////////////////
@@ -91,10 +94,11 @@ float f_atanf_taylor(float x)
     i = 1;
     while (term > eps || term < -eps)
     {
+         term = (f_power(x, (2*i+1)) / (2*i+1));
         result += sign * term;
-        sign = -sign;
-        i += 2;
-        term = f_power(x, i) / i;
+		sign *= -1;
+		i++;
+        
     }
     return(result);
 }
