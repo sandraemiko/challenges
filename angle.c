@@ -69,7 +69,7 @@ float f_power(float b, int exp)
 
 float f_same_sign(float x, float y) 
 {
-    if ((x > 0) != (y > 0)) 
+    if ((x < 0) != (y < 0)) 
         x = -x;
     return(x);
 }
