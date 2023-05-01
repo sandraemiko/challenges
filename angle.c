@@ -367,14 +367,14 @@ float ang_z(float acx, float acy, float acz)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main() {
-    printf("%f\n", atanf(2/1)); // output: 0.785398
-    printf("%fresultado\n", f_atan(2,1)); // output: 0.785398
-    printf("%fui\n", atan2(2,1)); // output: 0.785398
+    printf("%f\n", atanf(2)); 
+    printf("%fresultado\n", f_atan(2,1)); 
+    printf("%fui\n", atan2(2,1)); 
 
-    printf("%f\n", atanf(0.5f)); // output: 0.463648
-    printf("%f\n", atanf(2)); // output: 1.107149
-    printf("%f\n", atanf(-0.5f)); // output: -0.463648
-    printf("%f\n", atanf(-2500)); // output: -1.107149
+    printf("%f\n", atanf(0.5f)); 
+    printf("%f\n", atanf(2)); 
+    printf("%f\n", atanf(-0.5f)); 
+    printf("%f\n", atanf(-2500)); 
     printf("%f\n", atan(-2500));
 
     printf("%f acos\n", f_acosf(0.5));
