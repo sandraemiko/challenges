@@ -156,7 +156,7 @@ int f_isnan(double x)
 
 int f_isinf(double x)
 {
-    return !isnan(x) && isnan(x - x);
+    return (!isnan(x) && isnan(x - x));
 }
 
 //////////////////////////////////////float f_loor(float x)///////////////////////////////////////////////
@@ -173,7 +173,7 @@ float f_loor(float x)
     i = (int) x;
     if (x < 0 && x != i) 
         i--;
-    return ((float) i);
+    return ((float) i);   
 }
 
 //////////////////////////////////int f_signbit(float x)/////////////////////////////////////////////
