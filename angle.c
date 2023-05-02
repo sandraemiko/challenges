@@ -300,70 +300,7 @@ float f_acosf(float x)
 	}
 }
 
-////////////////////////////////////float ang_x(float acx, float acy, float acz)////////////////////////////////////////
-/*The "ang_x" function is a function that calculates the angle of a 3D vector represented by its x, y, and z coordinates.
-First, the function calculates the magnitude of the vector using the Newton-Raphson method for square root. Then, it 
-calculates the cosine of the angle by dividing the x coordinate by the value of the vector magnitude. The sine is then
-calculated from the cosine, again using the Newton-Raphson method. Finally, the function returns the arctangent of the
-sine and cosine to obtain the angle in radians.*/
 
-float ang_x(float acx, float acy, float acz)
-{
-    float G;
-    float cos;
-    float sin;
-    float tol;
-    float rooting_G;
-    float rooting_sin;
-    
-    tol = 1e-6;
-    rooting_G =f_power(acx,2) + f_power(acy,2) + f_power(acz,2);
-    G = f_sqrt_newton(rooting_G, rooting_G/2,tol);
-    cos = acx/G;
-    rooting_sin = 1 - f_power(cos , 2); 
-    sin = f_sqrt_newton(rooting_sin,rooting_sin/2, tol);
-    return(f_atan(sin, cos));
-}
-
-//////////////////////////////float ang_y(float acx, float acy, float acz)///////////////////////////////////////////////
-
-float ang_y(float acx, float acy, float acz)
-{
-    float G;
-    float cos;
-    float sin;
-    float tol;
-    float rooting_G;
-    float rooting_sin;
-    
-    tol = 1e-6;
-    rooting_G = f_power(acx,2) + f_power(acy,2) + f_power(acz,2);
-    G = f_sqrt_newton(rooting_G, rooting_G/2,tol);
-    cos = acy/G;
-    rooting_sin = 1 - f_power(cos , 2); 
-    sin = f_sqrt_newton(rooting_sin,rooting_sin/2, tol);
-    return(f_atan(sin, cos));
-}
-
-/////////////////////////////////float ang_z(float acx, float acy, float acz)////////////////////////////////////////////
-/*The 'ang_z' function is a function that calculates the angle between a 3D vector and the z-axis. First, the function 
-calculates the magnitude of the vector using the Newton-Raphson method for square roots. Then, it calculates the cosine
-of the angle by dividing the z-coordinate by the value of the vector magnitude. Finally, the function returns the arccosine
-to obtain the angle in radians*/
-
-float ang_z(float acx, float acy, float acz) 
-{
-    float G; 
-    float tol; 
-    float rooting_G; 
-    float cos; 
-
-    tol = 1e-6;
-    rooting_G = f_power(acx,2) + f_power(acy,2) + f_power(acz,2);
-    G = f_sqrt_newton(rooting_G, rooting_G/2,tol);
-    cos = acz/G;
-    return(f_acosf(cos));
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main() {
