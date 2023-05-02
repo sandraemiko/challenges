@@ -151,7 +151,7 @@ int f_isnan(float x)
     return (x != x);
 }
 
-///////////////////////////////////////int f_isinf(double x)///////////////////////////////////////////
+///////////////////////////////////////int f_isinf(float x)///////////////////////////////////////////
 /*The function "f_isinf" is a function that checks if a floating-point number "x" is an infinite value.*/
 
 int f_isinf(float x)
