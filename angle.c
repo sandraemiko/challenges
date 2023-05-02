@@ -24,7 +24,7 @@ float f_same_sign(float x, float y)
    if ((x < 0 && y > 0) || (x > 0 && y < 0)) 
         return (-x);
     else 
-        return (x); 
+        return (x);  
 }
 
 ///////////////////////////////float f_atan_taylor(float x)////////////////////////////////////////
