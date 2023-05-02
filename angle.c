@@ -173,7 +173,7 @@ float f_loor(float x)
     i = (int) x;
     if (x < 0 && x != i) 
         i--;
-    return ((float) i);   
+    return ((float) i);       
 }
 
 //////////////////////////////////int f_signbit(float x)/////////////////////////////////////////////
