@@ -172,7 +172,7 @@ float f_loor(float x)
 
     i = (int) x;
     if (x < 0 && x != i) 
-        i--;
+        i--;   
     return ((float) i);       
 }
 
