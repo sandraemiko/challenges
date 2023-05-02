@@ -146,7 +146,7 @@ float atanf(float x)
 /*The "f_isnan" function is a function that checks whether a floating-point number "x" is a NaN (Not a Number) 
 value. It uses a property of the NaN value, which is that it is the only value that is different from itself.*/
 
-int f_isnan(double x)
+int f_isnan(float x)
 {
     return (x != x);
 }
@@ -154,7 +154,7 @@ int f_isnan(double x)
 ///////////////////////////////////////int f_isinf(double x)///////////////////////////////////////////
 /*The function "f_isinf" is a function that checks if a floating-point number "x" is an infinite value.*/
 
-int f_isinf(double x)
+int f_isinf(float x)
 {
     return (!isnan(x) && isnan(x - x));
 }
@@ -172,7 +172,7 @@ float f_loor(float x)
 
     i = (int) x;
     if (x < 0 && x != i) 
-        i--;   
+        i--;  
     return ((float) i);       
 }
 
